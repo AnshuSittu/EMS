@@ -5,7 +5,6 @@ const Header = () => {
   return (
     <>
       <div className="w-full text-white flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 px-4 py-4 md:px-6 lg:px-8">
-        
         <h2 className="flex items-center text-2xl sm:text-2xl md:text-3xl font-medium leading-tight">
           <FiUser className="inline-block mr-2 text-red-500 w-7 h-7 sm:w-8 sm:h-8" />
           Hello
