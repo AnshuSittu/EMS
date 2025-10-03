@@ -36,9 +36,9 @@ const CreateTask = () => {
                 name="date"
                 type="date"
                 className="mt-2 block w-full rounded-lg border border-gray-300 bg-gray-100 px-4 py-2 
-             text-gray-900 placeholder-gray-500 shadow-sm 
-             focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400 focus:outline-none 
-             transition"
+                         text-gray-900 placeholder-gray-500 shadow-sm 
+                         focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400 focus:outline-none 
+                         transition"
                 aria-label="Task date"
               />
             </div>
