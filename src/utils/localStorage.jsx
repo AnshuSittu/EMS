@@ -6,13 +6,14 @@ const employees = [
     tasks: [
       {
         taskTitle: "Design Landing Page",
-        taskDescription: "Create responsive design for homepage using Tailwind.",
+        taskDescription:
+          "Create responsive design for homepage using Tailwind.",
         taskDate: "2025-10-05",
         category: "UI/UX",
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Fix Login Bug",
@@ -22,7 +23,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Write Unit Tests",
@@ -32,9 +33,9 @@ const employees = [
         active: false,
         newTask: false,
         completed: false,
-        failed: true
-      }
-    ]
+        failed: true,
+      },
+    ],
   },
   {
     id: 2,
@@ -49,7 +50,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Optimize Database",
@@ -59,7 +60,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Client Feedback Review",
@@ -69,9 +70,9 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
-      }
-    ]
+        failed: false,
+      },
+    ],
   },
   {
     id: 3,
@@ -86,7 +87,7 @@ const employees = [
         active: false,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "API Integration",
@@ -96,7 +97,7 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Update Docs",
@@ -106,9 +107,9 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
-      }
-    ]
+        failed: false,
+      },
+    ],
   },
   {
     id: 4,
@@ -123,7 +124,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Security Audit",
@@ -133,9 +134,9 @@ const employees = [
         active: false,
         newTask: false,
         completed: false,
-        failed: true
-      }
-    ]
+        failed: true,
+      },
+    ],
   },
   {
     id: 5,
@@ -150,7 +151,7 @@ const employees = [
         active: true,
         newTask: true,
         completed: false,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Code Review",
@@ -160,7 +161,7 @@ const employees = [
         active: false,
         newTask: false,
         completed: true,
-        failed: false
+        failed: false,
       },
       {
         taskTitle: "Server Maintenance",
@@ -170,30 +171,30 @@ const employees = [
         active: true,
         newTask: false,
         completed: false,
-        failed: false
-      }
-    ]
-  }
+        failed: false,
+      },
+    ],
+  },
 ];
 
 const admin = [
   {
     id: 100,
     email: "admin@example.com",
-    password: "123"
-  }
+    password: "123",
+  },
 ];
 
-
 export const setLocalStroage = () => {
-    localStorage.setItem('employees', JSON.stringify(employees))
-     localStorage.setItem('admin', JSON.stringify(admin))
-
-}
+  localStorage.setItem("employees", JSON.stringify(employees));
+  localStorage.setItem("admin", JSON.stringify(admin));
+};
 
 export const getLocalStorage = () => {
- const data = localStorage.getItem('employees')
- console.log(JSON.parse(data));
-}
+  const employees = JSON.parse(localStorage.getItem("employees"));
+  const admin = JSON.parse(localStorage.getItem("admin"));
 
-
+  //console.log(employees);
+  // console.log(admin, employees);
+  return{employees, admin}
+};
