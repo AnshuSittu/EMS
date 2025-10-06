@@ -14,26 +14,32 @@ function App() {
   },) */
 
   const [User, setUser] = useState(null);
+   const [loggedInUserData, setLoggedInUserData] = useState(null)
    const authData = useContext(AuthContext)
   //console.log(authData);
 
   useEffect(()=> {
-    if(authData) {
         const loggedInUser = localStorage.getItem("loggedInUser")
         if(loggedInUser){
-          setUser(loggedInUser.role)
+         const userData = JSON.parse(loggedInUser)
+         setUser(userData.role)
+         setLoggedInUserData(userData.data)
+         
         }
-
-    }
   },[authData]);
 
   const handleLogin = (email, password) => {
     if (email === "admin@me.com" && password === "123") {
       setUser("admin");
       localStorage.setItem('loggedInUser', JSON.stringify({role:'admin'}))
-    } else if (authData && authData.employees.find((e) => email == e.email && e.password)) {
-      setUser("employees");
-      localStorage.setItem('loggedInUser', JSON.stringify({role:'employees'}))
+    } else if (authData) {
+      const employee = authData.employees.find((e) => email == e.email && e.password==password)
+      if(employee){
+        
+        setUser("employees");
+        setLoggedInUserData(employee)
+        localStorage.setItem('loggedInUser', JSON.stringify({role:'employees'}))
+      }
     } else {
       alert("Invalid Password Or User");
     }
@@ -43,15 +49,16 @@ function App() {
   
 
   return (
-    <>
-      {!User ? (
-         <Login handleLogin={handleLogin} />
-      ) : User === "admin" ? (
-        <AdminDashboard />
-      ) : (
-        <EmployeeDashboard />
-      )}
-    </>
+  <>
+  {!User ? (
+    <Login handleLogin={handleLogin} />
+  ) : User === "admin" ? (
+    <AdminDashboard />
+  ) : User === "employees" ? (
+    <EmployeeDashboard data={loggedInUserData} />
+  ) : null}
+</>
+
   );
 }
 

@@ -1,7 +1,6 @@
-// Console-style output (updated Tailwind-only CSS; no React logic added)
 import React from 'react'
 
-const TaskListNumber = () => {
+const TaskListNumber = ({data}) => {
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8 mt-6">
       <div className="max-w-7xl mx-auto">
@@ -11,7 +10,7 @@ const TaskListNumber = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1 - New */}
-          <div className="relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-sky-600 to-sky-500 text-white shadow-lg transform transition-transform hover:-translate-y-1">
+          <div className="relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-orange-500/95 to-orange-400/95 text-white  shadow-lg transform transition-transform hover:-translate-y-1">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex-none w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
@@ -23,7 +22,7 @@ const TaskListNumber = () => {
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm font-medium opacity-95">New Tasks</p>
-                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">24</p>
+                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">{data.taskCounts.newTask}</p>
                 </div>
               </div>
 
@@ -54,7 +53,7 @@ const TaskListNumber = () => {
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm font-medium opacity-95">In Progress</p>
-                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">11</p>
+                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">{data.taskCounts.inProgress}</p>
                 </div>
               </div>
 
@@ -83,7 +82,7 @@ const TaskListNumber = () => {
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm font-medium opacity-95">Accepted</p>
-                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">7</p>
+                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">{data.taskCounts.accepted}</p>
                 </div>
               </div>
 
@@ -112,7 +111,7 @@ const TaskListNumber = () => {
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm font-medium opacity-95">Failed</p>
-                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">3</p>
+                  <p className="mt-1 text-2xl sm:text-3xl font-extrabold leading-tight">{data.taskCounts.failed}</p>
                 </div>
               </div>
 
