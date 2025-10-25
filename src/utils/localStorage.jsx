@@ -215,15 +215,29 @@ const employees = [
 
 
 const admin = [{
-    "id": 1,
-    "email": "admin@example.com",
+    "id": "02",
+    "name": "Avir Singh",
+    "email": "AnshuRajSingh@outlook.com",
     "password": "123"
 }];
 
 
 export const setLocalStroage = () => {
-  localStorage.setItem("employees", JSON.stringify(employees));
-  localStorage.setItem("admin", JSON.stringify(admin));
+  if (!localStorage.getItem("employees")) {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }
+
+  const storedAdmin = JSON.parse(localStorage.getItem("admin") || "null");
+  const shouldUpdateAdmin = !Array.isArray(storedAdmin) ||
+    storedAdmin.length === 0 ||
+    storedAdmin[0]?.email?.toLowerCase() !== admin[0].email.toLowerCase() ||
+    storedAdmin[0]?.name !== admin[0].name ||
+    storedAdmin[0]?.password !== admin[0].password ||
+    storedAdmin[0]?.id !== admin[0].id;
+
+  if (shouldUpdateAdmin) {
+    localStorage.setItem("admin", JSON.stringify(admin));
+  }
 };
 
 export const getLocalStorage = () => {

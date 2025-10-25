@@ -1,10 +1,12 @@
 import React from 'react'
 import AcceptTask from './AcceptTask'
+import SubTaskSection from './SubTaskSection'
 
-const NewTask = ({data}) => {
-  console.log(data);
-    return (
-        <div className="relative w-full sm:w-72 md:w-80 lg:w-72 flex-shrink-0 h-80 rounded-2xl bg-gradient-to-br from-orange-500/95 to-orange-400/95 text-white shadow-xl overflow-hidden snap-start">
+const NewTask = ({ data, onAddSubTask, onUpdateStatus }) => {
+  const subTasks = Array.isArray(data?.subTasks) ? data.subTasks : []
+
+  return (
+    <div className="relative w-full sm:w-72 md:w-80 lg:w-72 flex-shrink-0 min-h-[22rem] rounded-2xl bg-gradient-to-br from-orange-500/95 to-orange-400/95 text-white shadow-xl overflow-hidden snap-start">
         <div className="flex justify-between items-start px-5 pt-4">
           <span className="inline-flex items-center gap-2 bg-white/12 backdrop-blur-sm text-xs font-semibold text-white px-3 py-1 rounded-full shadow-sm">
             <span className="w-2 h-2 rounded-full bg-rose-400 inline-block" />
@@ -25,15 +27,19 @@ const NewTask = ({data}) => {
             Category :{data.category}
           </p>
 
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-            <AcceptTask data={data}/>
-            </div>
+          <div className="mt-4">
+            <AcceptTask
+              actions={['inProgress', 'completed']}
+              onUpdateStatus={onUpdateStatus}
+            />
           </div>
+          <SubTaskSection
+            subTasks={subTasks}
+            onAddSubTask={onAddSubTask}
+          />
         </div>
-
-      </div>
-    )
+    </div>
+  )
 }
 
 export default NewTask

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const TaskListNumber = ({data}) => {
+  if (!data || !data.taskCounts) {
+    return null; // or a loading spinner/message
+  }
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8 mt-6">
       <div className="max-w-7xl mx-auto">
